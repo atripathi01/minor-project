@@ -10,9 +10,13 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Login from '../Login/Register/Login';
 import BookTable from '../BookTable/BookTable';
-import {auth } from '../fire';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-
+import { auth } from '../fire';
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from 'firebase/auth';
 
 const style = {
   position: 'absolute',
@@ -52,6 +56,8 @@ const Navbar = () => {
   const [passwordError, setPasswordError] = useState('');
   const [account, setAccount] = useState(false);
   const [isBookTable, setIsBookTable] = useState(false);
+  const [loginData, setLoginData] = useState('');
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -65,11 +71,17 @@ const Navbar = () => {
     setPasswordError('');
   };
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
     clearError();
 
- 
-      signInWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email, password)
+      .then((data) => {
+        console.log(data);
+        setLoginData(data.user.email);
+        localStorage.setItem('user-data', JSON.stringify(data.user.email));
+        setOpen(false);
+      })
       .catch((err) => {
         switch (err.code) {
           case 'auth/invalid-email':
@@ -83,10 +95,14 @@ const Navbar = () => {
         }
       });
   };
-  const handleSignup = () => {
+  const handleSignup = (e) => {
+    e.preventDefault();
     clearError();
 
-      createUserWithEmailAndPassword(auth ,email, password)
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        setOpen(false);
+      })
       .catch((err) => {
         switch (err.code) {
           case 'auth/email-already-in-use':
@@ -104,7 +120,7 @@ const Navbar = () => {
   };
 
   const authListener = () => {
-    onAuthStateChanged(auth,(user) => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
         clearInput();
@@ -115,8 +131,10 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-      authListener();
-  },[])
+    authListener();
+    setLoginData(JSON.parse(localStorage.getItem('user-data')));
+  }, []);
+
   const openBookTable = () => {};
 
   return (
@@ -142,9 +160,13 @@ const Navbar = () => {
         </li>
       </ul>
       <div className="app__navbar-login">
-        <a onClick={handleOpen} className="p__opensans">
-          Log In / Register
-        </a>
+        {loginData ? (
+          <a onClick={handleOpen} className="p__opensans">
+            Log In / Register
+          </a>
+        ) : (
+          <p>{loginData}</p>
+        )}
         {/* {user?(<a href='#' onClick={handleOpen} className='p__opensans'>Log In / Register</a>):(<a href='#' onClick={handleLogout} className='p__opensans'>Logout</a>)} */}
         <Modal
           aria-labelledby="transition-modal-title"

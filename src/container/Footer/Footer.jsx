@@ -1,5 +1,11 @@
 import React from 'react';
-import { FiFacebook, FiTwitter, FiInstagram, FiGithub, FiLinkedin } from 'react-icons/fi';
+import {
+  FiFacebook,
+  FiTwitter,
+  FiInstagram,
+  FiGithub,
+  FiLinkedin,
+} from 'react-icons/fi';
 
 import { FooterOverlay, Newsletter } from '../../components';
 import { images } from '../../constants';
@@ -13,21 +19,28 @@ const Footer = () => (
     <div className="app__footer-links">
       <div className="app__footer-links_contact">
         <h1 className="app__footer-headtext">Contact Us</h1>
-        <p className="p__opensans">9 W 53rd St, New York, NY 10019, USA</p>
-        <p className="p__opensans">+1 212-344-1230</p>
-        <p className="p__opensans">+1 212-555-1230</p>
+        <p className="p__opensans">Street Kitchen, Bara Nagar, Rewa M.P</p>
+        <p className="p__opensans">+91 6267987047</p>
+        <p className="p__opensans">+91 8980082389</p>
       </div>
 
       <div className="app__footer-links_logo">
         <img src={images.gericht} alt="footer_logo" />
-        <p className="p__opensans">&quot;The best way to find yourself is to lose yourself in the service of others.&quot;</p>
-        <img src={images.spoon} className="spoon__img" style={{ marginTop: 15 }} />
+        <p className="p__opensans">
+          &quot;The best way to find yourself is to lose yourself in the service
+          of others.&quot;
+        </p>
+        <img
+          src={images.spoon}
+          className="spoon__img"
+          style={{ marginTop: 15 }}
+        />
         <div className="app__footer-links_icons">
           <FiFacebook />
           <FiTwitter />
           <FiInstagram />
-          <FiGithub/>
-          <FiLinkedin/>
+          <FiGithub />
+          <FiLinkedin />
         </div>
       </div>
 
@@ -43,7 +56,6 @@ const Footer = () => (
     <div className="footer__copyright">
       <p className="p__opensans">2022 REC. All Rights reserved.</p>
     </div>
-
   </div>
 );
 
