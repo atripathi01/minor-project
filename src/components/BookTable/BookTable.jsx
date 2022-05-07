@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './BookTable.module.css';
 
 const TABLE_DATA = [
@@ -39,6 +39,7 @@ const BookTable = ({ setIsBookTable }) => {
   const [bookedTables, setBookTables] = useState(['01', '04']);
   const [copyOfBookedTables, setCopyOfBookedTables] = useState([]);
   const handleSubmit = () => {
+    localStorage.setItem('booking', JSON.stringify(bookedTables));
     setIsBookTable(false);
   };
 
@@ -55,6 +56,10 @@ const BookTable = ({ setIsBookTable }) => {
       setBookTables(copy);
     }
   };
+
+  useEffect(() => {
+    setBookTables(JSON.parse(localStorage.getItem('booking')));
+  }, []);
 
   return (
     <>
