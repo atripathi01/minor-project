@@ -1,0 +1,114 @@
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 5rem;
+}
+
+.tableContainer {
+    font-family: var(--font-base);
+    font-weight: 700;
+    width: 120px;
+    height: 120px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    position: relative;
+    padding: 1rem;
+    text-align: right;
+    font-size: 2rem;
+}
+
+.heading{
+    font-family: var(--font-base);
+    position: absolute;
+    color: #8f7206;
+    font-size: 2.7rem;
+}
+
+.submitBtn{
+    background-color: var(--color-crimson);
+    color: var(--color-black);
+    font-family: var(--font-base);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 28px;
+    font-size: 16px;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-top:20px;
+}
+
+.choicesContainer{
+    margin-top: 5px;
+    display: flex;
+    gap:5px;
+    font-family: var(--font-alt);
+}
+
+.colorBlue{
+    background-color: rgb(27, 27, 199);
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+}
+
+
+.colorGreen{
+    background-color: rgba(0, 255, 0, 0.947);
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+}
+.notBooked{
+    background-color: rgba(0, 255, 0, 0.258);
+    border-left:10px solid green;
+    cursor: pointer;
+}
+
+.isBooked {
+    background-color: rgb(27, 27, 199);
+    border-left:10px solid rgb(36, 36, 131);
+    color:white;
+}
+
+.chair0{
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 40%;
+}
+
+
+.chair1{
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 50%;
+    position: absolute;
+    top: 40%;
+}
+.chair2{
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 50%;
+    position: absolute;
+    top: 100%;
+    left: 40%;
+}
+.chair3{
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 50%;
+    position: absolute;
+    top: 40%;
+    left: 100%;
+
+}
