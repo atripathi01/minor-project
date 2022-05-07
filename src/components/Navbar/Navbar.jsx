@@ -9,9 +9,9 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Login from '../Login/Register/Login';
-
 import BookTable from '../BookTable/BookTable';
-import fire from '../fire';
+import {auth } from '../fire';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
 
 const style = {
@@ -67,9 +67,9 @@ const Navbar = () => {
 
   const handleLogin = () => {
     clearError();
-    fire
-      .auth()
-      .signInWithEmailAndPassword(email, password)
+
+ 
+      signInWithEmailAndPassword(auth, email, password)
       .catch((err) => {
         switch (err.code) {
           case 'auth/invalid-email':
@@ -85,9 +85,8 @@ const Navbar = () => {
   };
   const handleSignup = () => {
     clearError();
-    fire
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
+
+      createUserWithEmailAndPassword(auth ,email, password)
       .catch((err) => {
         switch (err.code) {
           case 'auth/email-already-in-use':
@@ -101,11 +100,11 @@ const Navbar = () => {
       });
   };
   const handleLogout = () => {
-    fire.auth().signOut();
+    signOut(auth);
   };
 
   const authListener = () => {
-    fire.auth().onAuthStateChanged((user) => {
+    onAuthStateChanged(auth,(user) => {
       if (user) {
         setUser(user);
         clearInput();
@@ -115,9 +114,9 @@ const Navbar = () => {
     });
   };
 
-  // useEffect(() => {
-  //     authListener();
-  // },[])
+  useEffect(() => {
+      authListener();
+  },[])
   const openBookTable = () => {};
 
   return (

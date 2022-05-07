@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './login.css';
 const Login = (props) => {
   const {
     email,
@@ -15,21 +15,21 @@ const Login = (props) => {
   } = props;
 
   return (
-    <div>
-        {account?(<div>Login</div>):(<div>Register</div>)}
+    <div className='fontt'>
+        {account?(<div className='title'>Login</div>):(<div className='title'>Register</div>)}
       
       
-      <form>
+      <form className='form-l'>
         <label>User Email:</label>
         <br />
         <input placeholder='user email' required  value={email} onChange={(e)=>{setEmail(e.target.value)}} /><br />
-        <p>{emailError}</p>
+        <p className='error'>{emailError}</p>
         <br />
         <label>User Password:</label>
         <br />
         <input placeholder='password'  required type="password" value={password}  onChange={(e)=>{setPassword(e.target.value)}} />
         <br />
-        <p>{passwordError}</p>
+        <p className='error'>{passwordError}</p>
         <br />
         {account?(<><button onClick={handleLogin}>Login</button>
         <p>

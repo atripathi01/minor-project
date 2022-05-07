@@ -1,0 +1,41 @@
+.title{
+    width: 100%;
+    font-size: xx-large;
+    font-weight: 700;
+    text-align: center;
+}
+.fontt{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.form-l
+{
+    margin: 4rem 0.5rem;
+}
+
+input{
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+    margin: 0.5rem auto;
+    font-size: 14px;
+}
+label{
+    font-weight: 600;
+    font-size: 14px;
+    color: #272624;
+}
+button{
+    padding: 0.5rem 1rem;
+    background-color: #06f;
+    border: none;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 5px;
+
+}
+.error{
+    font-size: 11px;
+    color: red;
+}
