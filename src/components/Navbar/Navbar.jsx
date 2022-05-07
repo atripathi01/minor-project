@@ -12,7 +12,6 @@ import Login from '../Login/Register/Login';
 import fire from '../fire'
 
 
-
 const style = {
     position: 'absolute',
     top: '50%',
